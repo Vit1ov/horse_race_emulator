@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:myApp.properties"/>
+    <bean id = "horse1"
+          class="models.Horse">
+        <property name="breed" value="${horse1.breed}"/>
+        <property name="rider" ref="rider1"/>
+    </bean>
+    <bean id = "horse2"
+          class="models.Horse">
+        <property name="breed" value="${horse2.breed}"/>
+        <property name="rider" ref="rider2"/>
+    </bean>
+    <bean id = "horse3"
+          class="models.Horse">
+        <property name="breed" value="${horse3.breed}"/>
+        <property name="rider" ref="rider3"/>
+    </bean>
+    <bean id = "horse4"
+          class="models.Horse">
+        <property name="breed" value="${horse4.breed}"/>
+        <property name="rider" ref="rider4"/>
+    </bean>
+    <bean id = "horse5"
+          class="models.Horse">
+        <property name="breed" value="${horse5.breed}"/>
+        <property name="rider" ref="rider5"/>
+    </bean>
+
+
+    <bean id = "rider1"
+          class="models.Rider">
+        <property name="name" value="${rider1.name}"/>
+    </bean>
+    <bean id = "rider2"
+          class="models.Rider">
+        <property name="name" value="${rider2.name}"/>
+    </bean>
+    <bean id = "rider3"
+          class="models.Rider">
+        <property name="name" value="${rider3.name}"/>
+    </bean>
+    <bean id = "rider4"
+          class="models.Rider">
+        <property name="name" value="${rider4.name}"/>
+    </bean>
+    <bean id = "rider5"
+          class="models.Rider">
+        <property name="name" value="${rider5.name}"/>
+    </bean>
+
+    <bean id = "horseService"
+          class="services.HorseServiceImpl">
+        <property name="horses">
+            <list>
+                <ref bean="horse1"/>
+                <ref bean="horse2"/>
+                <ref bean="horse3"/>
+                <ref bean="horse4"/>
+                <ref bean="horse5"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="raceService"
+          class="services.RaceServiceImpl">
+        <constructor-arg ref="horseService"/>
+    </bean>
+
+    <bean id="emulationService"
+          class="services.EmulationServiceImpl">
+        <constructor-arg ref="raceService"/>
+    </bean>
+</beans>
