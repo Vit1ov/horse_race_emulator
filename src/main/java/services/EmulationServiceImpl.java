@@ -1,12 +1,14 @@
 package services;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import models.Horse;
 import models.Race;
+import org.springframework.stereotype.Service;
 
 import java.util.Scanner;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
+@Service
 public class EmulationServiceImpl implements EmulationService {
 
     private final RaceService raceService;

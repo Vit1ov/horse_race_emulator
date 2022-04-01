@@ -1,9 +1,11 @@
 package services;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import models.Race;
+import org.springframework.stereotype.Service;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
+@Service
 public class RaceServiceImpl implements RaceService {
 
     private final HorseService horseService;
